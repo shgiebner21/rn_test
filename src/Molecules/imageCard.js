@@ -6,14 +6,14 @@ import Icon from '../Atoms/icon'
 
 
 function ImageCard(props) {
-  const { uri, onPress } = props
+  const { uri, size, onPress } = props
   const { width, height } = Dimensions.get('window')
 
   return (
     <View style={{ width: width * .9 }} > 
       <View  style={styles.containerStyle}>
         <View style={styles.imageStyle} >
-        <ImageAvatar uri={uri}  />
+        <ImageAvatar uri={uri} size={size}  />
         </View>
         
         <View style={styles.iconStyle} >

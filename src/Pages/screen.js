@@ -18,7 +18,8 @@ export default class Screen extends Component {
       EMail: '',
       password: '',
       pin: '',
-      checked: false
+      checked: false,
+      openDrawer: false
     })
   }
 
@@ -51,20 +52,20 @@ export default class Screen extends Component {
   }
 
   onMenuPress = () => {
-    alert('Menu button pressed')
+    this.setState({ openDrawer: !this.state.openDrawer })
   }
 
   onIconPress = (e) => alert('Ability to update image is under construction')
 
   render() {
-    const { name, phone, EMail, password, pin, checked } = this.state
+    const { name, phone, EMail, password, pin, checked, openDrawer } = this.state
     const uri = '../Assets/shg_avatar.jpeg'
 
     return (
       <View>
         <HeaderCard onPress={this.onMenuPress} />
 
-        <ImageCard uri={require(uri)} icon='add-circle'
+        <ImageCard uri={require(uri)} icon='add-circle' size='large'
           onPress={this.onIconPress} />
 
         <Form>
