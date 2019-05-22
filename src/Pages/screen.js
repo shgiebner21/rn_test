@@ -35,17 +35,34 @@ export default class Screen extends Component {
     this.setState({ name: '', phone: '', EMail: '', password: '', pin: '', checked: false })
   }
 
+  onSavePress = (e) => {
+    e.preventDefault()
+    console.log('JSON data looks like; ', JSON.stringify(this.state))
+
+    fetch('http://projects.codeandtrust.com/api/user/create', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(this.state)
+    })
+    .then(resp => console.log('data is, ', resp))
+    .catch(error => console.log('error is, ', error) )
+  }
+
+  onMenuPress = () => {
+    alert('Menu button pressed')
+  }
+
   onIconPress = (e) => alert('Ability to update image is under construction')
 
   render() {
     const { name, phone, EMail, password, pin, checked } = this.state
     const uri = '../Assets/shg_avatar.jpeg'
 
-    console.log('state is, ', this.state)
-
     return (
       <View>
-        <HeaderCard />
+        <HeaderCard onPress={this.onMenuPress} />
 
         <ImageCard uri={require(uri)} icon='add-circle'
           onPress={this.onIconPress} />
@@ -65,6 +82,7 @@ export default class Screen extends Component {
                       onChangeText={this.handleChange('EMail')} />
           <InputField label='Password' 
                       value={password}
+                      secure={true}
                       placeholder='enter password'
                       onChangeText={this.handleChange('password')} />
           <InputField label='PIN' 
@@ -76,7 +94,8 @@ export default class Screen extends Component {
           <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }} >
             <NativeButton label='Cancel' type='transparent'
                 onPress={this.onCancelPress} />
-            <NativeButton label='Save' type='primary' />
+            <NativeButton label='Save' type='primary'
+                onPress={this.onSavePress}  />
           </View>
         </Form>
 
