@@ -1,10 +1,10 @@
 import React from 'react'
-import { Icon as NewIcon} from 'native-base'
+import { Icon as RNIcon } from 'react-native-elements'
 
 function Icon(props) {
   const { icon, onPress } = props
 
-  return <NewIcon name={icon} onPress={onPress} />
+  return <RNIcon name={icon} color='white' onPress={onPress} />
 }
 
 export default Icon
