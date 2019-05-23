@@ -18,8 +18,7 @@ export default class Screen extends Component {
       EMail: '',
       password: '',
       pin: '',
-      checked: false,
-      openDrawer: false
+      checked: false
     })
   }
 
@@ -51,9 +50,7 @@ export default class Screen extends Component {
     .catch(error => console.log('error is, ', error) )
   }
 
-  onMenuPress = () => {
-    this.setState({ openDrawer: !this.state.openDrawer })
-  }
+  onMenuPress = () => alert('This is going to be a very sweet sidebar navigation tool.  Trust me, it will be worth the wait.')
 
   onIconPress = (e) => alert('Ability to update image is under construction')
 

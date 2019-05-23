@@ -1,5 +1,6 @@
 import React from 'react'
-import { Header, Left, Button, Icon } from 'native-base'
+import { Icon as RNIcon } from 'react-native-elements'
+import { Header, Left, Right, Button, Icon } from 'native-base'
 
 
 function HeaderCard(props) {
@@ -14,6 +15,12 @@ function HeaderCard(props) {
               <Icon name='menu' style={{ color: 'white' }} />
             </Button>
           </Left>
+
+          <Right>
+            <Button transparent onPress={onPress} >
+              <RNIcon name='more-vert' color='white' />
+            </Button>
+          </Right>
         </Header>
 
     )
